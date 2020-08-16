@@ -1,0 +1,228 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
+[ext_resource path="res://characters/Zombie.gd" type="Script" id=2]
+[ext_resource path="res://characters/HealthManager.gd" type="Script" id=3]
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=4]
+[ext_resource path="res://characters/AnimationManager.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.32468
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -3.00679, -3.22951 ), Vector2( 3.007, -3.23 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 21.3775, -21.4, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -0.946009, -2.49641 ), Vector2( -2.10224, -4.51982 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -26.4804, 101.715 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2.17157 ), Vector2( 0, 0 ), Vector2( 0, -2.17157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 13.3637, 0.0, -13.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
+}
+
+[node name="Zombie" type="KinematicBody2D" groups=[
+"zombies",
+]]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Graphics" type="Node2D" parent="."]
+position = Vector2( 0, 6.00816 )
+
+[node name="AnimationManager" type="Node2D" parent="Graphics"]
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
+autoplay = "idle"
+anims/attack = SubResource( 5 )
+anims/die = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Graphics/AnimationManager"]
+position = Vector2( 0, -7 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 400, 32, 16, 16 )
+
+[node name="MoveCPUParticles2D" type="CPUParticles2D" parent="Graphics/AnimationManager"]
+emitting = false
+amount = 3
+lifetime = 0.15
+explosiveness = 0.92
+local_coords = false
+direction = Vector2( 0, -1 )
+initial_velocity = 30.0
+
+[node name="CharacterMover" type="Node2D" parent="."]
+script = ExtResource( 1 )
+max_speed = 60.0
+accel = 50.0
+
+[node name="HealthManager" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="PauseAfterAttackTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+[connection signal="timeout" from="AttackTimer" to="." method="finish_attack"]
+[connection signal="timeout" from="PauseAfterAttackTimer" to="." method="set_chase_state"]

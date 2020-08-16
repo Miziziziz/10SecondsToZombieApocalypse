@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/MuzzleFlash.gd" type="Script" id=1]
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=2]
+
+[node name="MuzzleFlash" type="Sprite"]
+position = Vector2( 17, 0 )
+rotation = 1.5708
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 240, 160, 16, 16 )
+script = ExtResource( 1 )
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="timeout" from="FlashTimer" to="." method="hide"]

@@ -1,0 +1,554 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
+[ext_resource path="res://characters/Player.gd" type="Script" id=2]
+[ext_resource path="res://characters/HealthManager.gd" type="Script" id=3]
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=4]
+[ext_resource path="res://characters/AnimationManager.gd" type="Script" id=5]
+[ext_resource path="res://characters/WeaponManager.gd" type="Script" id=6]
+[ext_resource path="res://assets/ui/outline.png" type="Texture" id=7]
+[ext_resource path="res://characters/PickupManager.gd" type="Script" id=8]
+[ext_resource path="res://assets/pistol.png" type="Texture" id=9]
+[ext_resource path="res://player_ui/WeaponsHeld.gd" type="Script" id=10]
+[ext_resource path="res://assets/ui/heart_empty.png" type="Texture" id=11]
+[ext_resource path="res://player_ui/HealthDisplay.gd" type="Script" id=12]
+[ext_resource path="res://characters/StatsDisplay.gd" type="Script" id=13]
+[ext_resource path="res://player_ui/DynFont.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/ui/KLEINTEN.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://player_ui/TimerDisplay.gd" type="Script" id=16]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.32468
+
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -0.946009, -2.49641 ), Vector2( -2.10224, -4.51982 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -26.4804, 101.715 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2.17157 ), Vector2( 0, 0 ), Vector2( 0, -2.17157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 13.3637, 0.0, -13.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 15 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Graphics" type="Node2D" parent="."]
+position = Vector2( 0, 6.00816 )
+
+[node name="AnimationManager" type="Node2D" parent="Graphics"]
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
+autoplay = "idle"
+anims/die = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Graphics/AnimationManager"]
+position = Vector2( 0, -7 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 480, 144, 16, 16 )
+
+[node name="MoveCPUParticles2D" type="CPUParticles2D" parent="Graphics/AnimationManager"]
+emitting = false
+amount = 3
+lifetime = 0.15
+explosiveness = 0.92
+local_coords = false
+direction = Vector2( 0, -1 )
+initial_velocity = 30.0
+
+[node name="CharacterMover" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="HealthManager" type="Node2D" parent="."]
+script = ExtResource( 3 )
+max_health = 4
+
+[node name="PickupManager" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupManager"]
+shape = SubResource( 5 )
+
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Hand" type="Position2D" parent="WeaponManager"]
+position = Vector2( 11.513, 0.118183 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WeaponsHeld" type="GridContainer" parent="CanvasLayer" groups=[
+"player",
+]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 11.3393
+margin_top = -40.0
+margin_right = 367.339
+columns = 10
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot3" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot4" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot5" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 144.0
+margin_right = 176.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot6" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 180.0
+margin_right = 212.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot7" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 216.0
+margin_right = 248.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot8" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 252.0
+margin_right = 284.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot8"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot9" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 288.0
+margin_right = 320.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot9"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot10" type="TextureRect" parent="CanvasLayer/WeaponsHeld"]
+margin_left = 324.0
+margin_right = 356.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+
+[node name="SlotContents" type="TextureRect" parent="CanvasLayer/WeaponsHeld/Slot10"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthDisplay" type="GridContainer" parent="CanvasLayer"]
+margin_left = 5.6123
+margin_top = 3.92862
+margin_right = 181.612
+margin_bottom = 43.9286
+rect_scale = Vector2( 2, 2 )
+columns = 10
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart4" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart5" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart6" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 100.0
+margin_right = 116.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart7" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart8" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart9" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 160.0
+margin_right = 176.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="Heart10" type="TextureRect" parent="CanvasLayer/HealthDisplay"]
+margin_left = 180.0
+margin_right = 196.0
+margin_bottom = 16.0
+texture = ExtResource( 11 )
+
+[node name="StatsDisplay" type="Label" parent="CanvasLayer"]
+margin_left = 11.1118
+margin_top = 48.4157
+margin_right = 67.1118
+margin_bottom = 88.4157
+custom_fonts/font = ExtResource( 14 )
+text = "Points: 0
+Fuel: 0"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerDisplay" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -124.0
+margin_top = 39.7806
+margin_right = 124.0
+margin_bottom = 84.7806
+custom_fonts/font = SubResource( 6 )
+text = "Time Left: 10"
+align = 1
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="CanvasLayer/TimerDisplay"]
+autostart = true
+[connection signal="timeout" from="CanvasLayer/TimerDisplay/Timer" to="CanvasLayer/TimerDisplay" method="decrement_time"]

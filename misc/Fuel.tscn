@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="Fuel" type="Area2D" groups=[
+"fuel",
+]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 3.14159
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 342, 164, 6, 9 )
