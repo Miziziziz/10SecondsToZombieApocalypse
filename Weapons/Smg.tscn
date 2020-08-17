@@ -117,6 +117,7 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 3, 2 )
 shape = SubResource( 1 )
 
@@ -127,6 +128,7 @@ position = Vector2( 17, 0 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Graphics"]
+self_modulate = Color( 0.427451, 0.447059, 0.486275, 1 )
 position = Vector2( 3, 2 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 656, 144, 16, 16 )

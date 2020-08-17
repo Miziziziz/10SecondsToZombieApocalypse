@@ -1,0 +1,535 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=1]
+[ext_resource path="res://assets/smoke.png" type="Texture" id=2]
+[ext_resource path="res://misc/Train.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("WheelsAssembly/Wheels/BigWheel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WheelsAssembly/Wheels/BigWheel2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WheelsAssembly/Wheels/BigWheel3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WheelsAssembly/Wheels/SmallWheel:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("WheelsAssembly/Wheels/SmallWheel2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("WheelsAssembly/WheelBarLong/WheelBarEnd:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -210.0, -150.0 ]
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.0181818 ), 0.0, 1.30354, 0, 0, Vector2( 1, 0.981818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 38, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 34, 7 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[node name="Train" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/run = SubResource( 1 )
+
+[node name="Rails" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -3.89349 )
+
+[node name="Rail" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail2" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 16, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail3" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 32, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail4" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 48, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail5" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 64, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail6" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 80, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail7" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 96, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail8" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( 112, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail9" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( -63, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail10" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( -47, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail11" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( -31, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Rail12" type="Sprite" parent="Rails"]
+self_modulate = Color( 0.141176, 0.117647, 0.117647, 1 )
+position = Vector2( -15, 0 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 80, 16, 16 )
+
+[node name="Back" type="Node2D" parent="."]
+modulate = Color( 0.337255, 0.2, 0.176471, 1 )
+position = Vector2( -40, 17 )
+
+[node name="Back" type="Sprite" parent="Back"]
+position = Vector2( 15.5625, -13.25 )
+scale = Vector2( 4.22656, 0.484375 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back9" type="Sprite" parent="Back"]
+position = Vector2( -19.3909, -14.2393 )
+rotation = -0.45572
+scale = Vector2( 0.555373, 0.243164 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back2" type="Sprite" parent="Back"]
+position = Vector2( 34.3125, -21.4375 )
+scale = Vector2( 2.03906, 0.382812 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back3" type="Sprite" parent="Back"]
+position = Vector2( 36.5, -26.6875 )
+scale = Vector2( 1.9375, 1.03906 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back4" type="Sprite" parent="Back"]
+position = Vector2( 40, -34.125 )
+scale = Vector2( 1.40625, 0.359375 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back11" type="Sprite" parent="Back"]
+position = Vector2( -2, -28 )
+scale = Vector2( 0.625, 0.359375 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back12" type="Sprite" parent="Back"]
+position = Vector2( -2, -31.0625 )
+scale = Vector2( 0.25, 0.742188 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back10" type="Sprite" parent="Back"]
+position = Vector2( 37, -19 )
+scale = Vector2( 1.40625, 0.359375 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back5" type="Sprite" parent="Back"]
+position = Vector2( 45.1875, -35.5 )
+scale = Vector2( 1.11719, 0.3125 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back6" type="Sprite" parent="Back"]
+position = Vector2( 4.57307, -20.5421 )
+scale = Vector2( 2.30491, 0.79911 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back7" type="Sprite" parent="Back"]
+position = Vector2( -8.06647, -22.5088 )
+scale = Vector2( 0.846499, 0.370979 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="Back8" type="Sprite" parent="Back"]
+position = Vector2( -9.94359, -24.5944 )
+scale = Vector2( 0.445004, 0.370979 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 80, 16, 16 )
+
+[node name="WheelsAssembly" type="Node2D" parent="."]
+position = Vector2( -40, 17 )
+
+[node name="Wheels" type="Node2D" parent="WheelsAssembly"]
+modulate = Color( 0.815686, 0.666667, 0.376471, 1 )
+
+[node name="BigWheel" type="Sprite" parent="WheelsAssembly/Wheels"]
+position = Vector2( 8, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 224, 16, 16 )
+
+[node name="BigWheel2" type="Sprite" parent="WheelsAssembly/Wheels"]
+position = Vector2( 24, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 224, 16, 16 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="WheelsAssembly/Wheels/BigWheel2"]
+position = Vector2( 0, -6.02036 )
+remote_path = NodePath("../../../WheelBarLong")
+update_rotation = false
+update_scale = false
+
+[node name="BigWheel3" type="Sprite" parent="WheelsAssembly/Wheels"]
+position = Vector2( 40, -8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 224, 16, 16 )
+
+[node name="SmallWheel" type="Sprite" parent="WheelsAssembly/Wheels"]
+position = Vector2( -4, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 241, 217, 6, 6 )
+
+[node name="SmallWheel2" type="Sprite" parent="WheelsAssembly/Wheels"]
+position = Vector2( -12, -4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 241, 217, 6, 6 )
+
+[node name="WheelBarLong" type="Node2D" parent="WheelsAssembly"]
+modulate = Color( 0.427451, 0.447059, 0.486275, 1 )
+position = Vector2( 24, -14.0204 )
+
+[node name="WheelBar" type="Sprite" parent="WheelsAssembly/WheelBarLong"]
+rotation = -1.57079
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 16, 16 )
+
+[node name="WheelBar2" type="Sprite" parent="WheelsAssembly/WheelBarLong"]
+position = Vector2( 12, 0.020359 )
+rotation = -1.57079
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 16, 16 )
+
+[node name="WheelBar3" type="Sprite" parent="WheelsAssembly/WheelBarLong"]
+position = Vector2( -12, 0.020359 )
+rotation = -1.57079
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 16, 16 )
+
+[node name="WheelBarEnd" type="Node2D" parent="WheelsAssembly/WheelBarLong"]
+position = Vector2( -18, 0.020359 )
+rotation = -3.66519
+scale = Vector2( 1, 1 )
+
+[node name="WheelBarEnd" type="Sprite" parent="WheelsAssembly/WheelBarLong/WheelBarEnd"]
+position = Vector2( 7, 0 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 16, 16 )
+
+[node name="Bumper" type="Sprite" parent="."]
+modulate = Color( 0.109804, 0.0509804, 0.0392157, 1 )
+position = Vector2( -60, 5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 80, 16, 16 )
+
+[node name="Carriage" type="Node2D" parent="."]
+position = Vector2( -40, 17 )
+
+[node name="Step" type="Sprite" parent="Carriage"]
+self_modulate = Color( 0.815686, 0.666667, 0.376471, 1 )
+position = Vector2( 56, -14 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 175, 17, 18 )
+
+[node name="House" type="Node2D" parent="Carriage"]
+modulate = Color( 0.815686, 0.666667, 0.376471, 1 )
+
+[node name="Carriage" type="Sprite" parent="Carriage/House"]
+position = Vector2( 32, -25 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 240, 16, 16 )
+
+[node name="Carriage2" type="Sprite" parent="Carriage/House"]
+position = Vector2( 46, -25 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 176, 16, 16 )
+
+[node name="Carriage3" type="Sprite" parent="Carriage/House"]
+position = Vector2( 21, -25 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 228, 16, 12 )
+
+[node name="Roof" type="Node2D" parent="Carriage"]
+modulate = Color( 0.109804, 0.0509804, 0.0392157, 1 )
+
+[node name="Roof" type="Sprite" parent="Carriage/Roof"]
+position = Vector2( 24, -35 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 288, 176, 16, 8 )
+
+[node name="Roof2" type="Sprite" parent="Carriage/Roof"]
+position = Vector2( 38, -35 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 305, 176, 14, 8 )
+
+[node name="Roof3" type="Sprite" parent="Carriage/Roof"]
+position = Vector2( 52, -35 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 305, 176, 14, 8 )
+
+[node name="FrontTube" type="Node2D" parent="."]
+modulate = Color( 0.109804, 0.0509804, 0.0392157, 1 )
+position = Vector2( -40, 17 )
+
+[node name="Tube3" type="Sprite" parent="FrontTube"]
+position = Vector2( 15, -23 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 225, 16, 15 )
+
+[node name="Tube2" type="Sprite" parent="FrontTube"]
+position = Vector2( 7, -23 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 225, 16, 15 )
+
+[node name="Tube" type="Sprite" parent="FrontTube"]
+position = Vector2( -1, -23 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 225, 16, 15 )
+
+[node name="FrontBulb" type="Sprite" parent="FrontTube"]
+position = Vector2( -10, -22 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 63, 225, 17, 15 )
+
+[node name="SmokeStack" type="Sprite" parent="."]
+self_modulate = Color( 0.815686, 0.666667, 0.376471, 1 )
+position = Vector2( -42, -15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 721, 32, 14, 16 )
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="SmokeStack"]
+show_behind_parent = true
+position = Vector2( 0, -3 )
+emitting = false
+amount = 32
+lifetime = 5.0
+local_coords = false
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2( 0, -20 )
+angular_velocity = 32.77
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 1.86
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[node name="WheelCovers" type="Node2D" parent="."]
+modulate = Color( 0.109804, 0.0509804, 0.0392157, 1 )
+position = Vector2( -40, 17 )
+
+[node name="SmallWheelCover" type="Sprite" parent="WheelCovers"]
+position = Vector2( -6, -14 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 145, 193, 14, 6 )
+
+[node name="LargeWheelCover" type="Sprite" parent="WheelCovers"]
+position = Vector2( 8, -13 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 33, 16, 14 )
+
+[node name="LargeWheelCover2" type="Sprite" parent="WheelCovers"]
+position = Vector2( 24, -13 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 33, 16, 14 )
+
+[node name="LargeWheelCover3" type="Sprite" parent="WheelCovers"]
+position = Vector2( 40, -13 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 33, 16, 14 )
+
+[node name="SmallWheelsTop" type="Sprite" parent="WheelCovers"]
+position = Vector2( -8, -9 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 241, 212, 14, 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -27, 8 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -21, -7 )
+shape = SubResource( 4 )
+
+[node name="BoardTrainArea" type="Area2D" parent="."]
+position = Vector2( 28, 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardTrainArea"]
+shape = SubResource( 5 )

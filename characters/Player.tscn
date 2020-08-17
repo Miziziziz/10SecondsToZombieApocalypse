@@ -152,6 +152,7 @@ font_data = ExtResource( 15 )
 "player",
 ]]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -170,6 +171,7 @@ anims/idle = SubResource( 3 )
 anims/run = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Graphics/AnimationManager"]
+self_modulate = Color( 0.917647, 0.827451, 0.713726, 1 )
 position = Vector2( 0, -7 )
 texture = ExtResource( 4 )
 region_enabled = true
@@ -186,6 +188,7 @@ initial_velocity = 30.0
 
 [node name="CharacterMover" type="Node2D" parent="."]
 script = ExtResource( 1 )
+accel = 100.0
 
 [node name="HealthManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -542,7 +545,6 @@ margin_top = 39.7806
 margin_right = 124.0
 margin_bottom = 84.7806
 custom_fonts/font = SubResource( 6 )
-text = "Time Left: 10"
 align = 1
 script = ExtResource( 16 )
 __meta__ = {
@@ -550,5 +552,4 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="CanvasLayer/TimerDisplay"]
-autostart = true
 [connection signal="timeout" from="CanvasLayer/TimerDisplay/Timer" to="CanvasLayer/TimerDisplay" method="decrement_time"]

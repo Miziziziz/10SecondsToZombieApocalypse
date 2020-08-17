@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var health_manager = $HealthManager
 onready var character_mover = $CharacterMover
 onready var animation_manager = $Graphics/AnimationManager
+
 onready var nav : Navigation2D = get_parent()
 
 enum STATES {IDLE, CHASING, ATTACKING, DEAD}
@@ -28,13 +29,17 @@ func _process(delta):
 		STATES.CHASING:
 			process_chase_state(delta)
 
+func set_state_chase():
+	cur_state = STATES.CHASING
+
 func process_idle_state(_delta):
 	if has_line_of_sight(player.global_position):
 		cur_state = STATES.CHASING
 
 func process_chase_state(_delta):
 	var path = nav.get_simple_path(global_position, player.global_position)
-	character_mover.set_move_vec(path[1] - global_position)
+	if path.size() > 1:
+		character_mover.set_move_vec(path[1] - global_position)
 	if in_min_attack_range_of_player():
 		start_attack()
 
@@ -76,4 +81,9 @@ func kill():
 	cur_state = STATES.DEAD
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	character_mover.set_move_vec(Vector2.ZERO)
+	character_mover.dead = true
 	player.add_points(1)
+	$Graphics/AnimationManager/MoveCPUParticles2D.emitting = false
+
+func get_move_vec():
+	return character_mover.move_vec

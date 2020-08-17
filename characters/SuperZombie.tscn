@@ -8,7 +8,13 @@
 [ext_resource path="res://characters/HitBox.gd" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 2.04374
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 8.78949
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 11.6041
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
@@ -170,16 +176,10 @@ tracks/2/keys = {
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
-radius = 8.78949
-
-[sub_resource type="CircleShape2D" id=8]
-radius = 11.6041
-
 [sub_resource type="CircleShape2D" id=6]
 radius = 5.35087
 
-[node name="Zombie" type="KinematicBody2D" groups=[
+[node name="SuperZombie" type="KinematicBody2D" groups=[
 "zombies",
 ]]
 collision_layer = 18
@@ -188,39 +188,14 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Graphics" type="Node2D" parent="."]
-position = Vector2( 0, 6.00816 )
-
-[node name="AnimationManager" type="Node2D" parent="Graphics"]
-script = ExtResource( 5 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
-autoplay = "idle"
-anims/attack = SubResource( 2 )
-anims/die = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/run = SubResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="Graphics/AnimationManager"]
-self_modulate = Color( 0.47451, 0.607843, 0.27451, 1 )
-position = Vector2( 0, -7 )
-texture = ExtResource( 4 )
-region_enabled = true
-region_rect = Rect2( 400, 32, 16, 16 )
-
-[node name="MoveCPUParticles2D" type="CPUParticles2D" parent="Graphics/AnimationManager"]
-emitting = false
-amount = 3
-lifetime = 0.15
-explosiveness = 0.92
-local_coords = false
-direction = Vector2( 0, -1 )
-initial_velocity = 30.0
-
 [node name="CharacterMover" type="Node2D" parent="."]
 script = ExtResource( 1 )
-max_speed = 60.0
+max_speed = 150.0
 repel_amount = 0.4
+
+[node name="Timer" type="Timer" parent="CharacterMover"]
+wait_time = 0.1
+autostart = true
 
 [node name="ZombieRepeller" type="Area2D" parent="CharacterMover"]
 collision_layer = 0
@@ -236,8 +211,38 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterMover/ZombieAttractor"]
 shape = SubResource( 8 )
 
+[node name="Graphics" type="Node2D" parent="."]
+position = Vector2( 0, 6.00816 )
+
+[node name="AnimationManager" type="Node2D" parent="Graphics"]
+script = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
+autoplay = "idle"
+anims/attack = SubResource( 2 )
+anims/die = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/run = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Graphics/AnimationManager"]
+self_modulate = Color( 0.588235, 0.258824, 0.196078, 1 )
+position = Vector2( 0, -7 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 416, 32, 16, 16 )
+
+[node name="MoveCPUParticles2D" type="CPUParticles2D" parent="Graphics/AnimationManager"]
+emitting = false
+amount = 3
+lifetime = 0.15
+explosiveness = 0.92
+local_coords = false
+direction = Vector2( 0, -1 )
+initial_velocity = 30.0
+
 [node name="HealthManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
+max_health = 3
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -254,5 +259,6 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 6 )
+[connection signal="timeout" from="CharacterMover/Timer" to="CharacterMover" method="increase_speed"]
 [connection signal="timeout" from="AttackTimer" to="." method="finish_attack"]
 [connection signal="timeout" from="PauseAfterAttackTimer" to="." method="set_chase_state"]

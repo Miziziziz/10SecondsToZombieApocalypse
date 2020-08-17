@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://misc/DoomSpawner.gd" type="Script" id=1]
+
+[node name="DoomSpawner" type="Node2D" groups=[
+"doom_spawner",
+]]
+script = ExtResource( 1 )
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 0, -168 )
+
+[node name="Position2D2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -24, -168 )
+
+[node name="Position2D3" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -56, -168 )
+
+[node name="Position2D4" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -88, -168 )
+
+[node name="Position2D5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -120, -168 )
+
+[node name="Position2D6" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -152, -168 )
+
+[node name="Position2D7" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -184, -168 )
+
+[node name="Position2D8" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -216, -168 )
+
+[node name="Position2D9" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -248, -168 )
+
+[node name="Position2D10" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, -152 )
+
+[node name="Position2D19" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, -120 )
+
+[node name="Position2D20" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, -88 )
+
+[node name="Position2D21" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, -56 )
+
+[node name="Position2D22" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, -14 )
+
+[node name="Position2D23" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, 18 )
+
+[node name="Position2D24" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, 50 )
+
+[node name="Position2D25" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 282, 82 )
+
+[node name="Position2D26" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, -142 )
+
+[node name="Position2D27" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, -110 )
+
+[node name="Position2D28" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, -78 )
+
+[node name="Position2D29" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, -46 )
+
+[node name="Position2D30" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, -4 )
+
+[node name="Position2D31" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, 28 )
+
+[node name="Position2D32" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, 60 )
+
+[node name="Position2D33" type="Position2D" parent="SpawnPoints"]
+position = Vector2( -270, 92 )
+
+[node name="Position2D11" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 258, -168 )
+
+[node name="Position2D12" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 226, -168 )
+
+[node name="Position2D13" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 194, -168 )
+
+[node name="Position2D14" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 162, -168 )
+
+[node name="Position2D15" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 130, -168 )
+
+[node name="Position2D16" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 98, -168 )
+
+[node name="Position2D17" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 66, -168 )
+
+[node name="Position2D18" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 34, -168 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn"]

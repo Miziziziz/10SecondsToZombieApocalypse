@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=2]
 
 [node name="MuzzleFlash" type="Sprite"]
+self_modulate = Color( 0.988235, 0.905882, 0.592157, 1 )
+show_behind_parent = true
 position = Vector2( 17, 0 )
 rotation = 1.5708
 texture = ExtResource( 2 )

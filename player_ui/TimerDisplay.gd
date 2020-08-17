@@ -4,7 +4,8 @@ signal out_of_time
 
 var time_left = 10
 
-func _ready():
+func start():
+	$Timer.start()
 	update_display()
 
 func decrement_time():
@@ -13,6 +14,7 @@ func decrement_time():
 	time_left -= 1
 	if time_left <= 0:
 		time_left = 0
+		get_tree().call_group("doom_spawner", "start_spawning")
 		emit_signal("out_of_time")
 	update_display()
 
