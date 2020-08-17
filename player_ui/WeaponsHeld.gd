@@ -1,9 +1,6 @@
 extends GridContainer
 
-var slots_unlocked = 3
-
-func _ready():
-	init()
+var slots_unlocked = 1
 
 func init():
 	var ind = 0

@@ -20,11 +20,18 @@ export var repel_amount = 0.1
 var dead = false
 
 func _ready():
-	drag = accel / max_speed
+	update_drag()
 	if has_node("ZombieAttractor"):
 		zombie_attractor = $ZombieAttractor
 	if has_node("ZombieRepeller"):
 		zombie_repeller = $ZombieRepeller
+
+func set_speed(sp: int):
+	max_speed = 20 * sp + 80
+	update_drag()
+
+func update_drag():
+	drag = accel / max_speed
 
 func init(_body: KinematicBody2D):
 	body = _body
@@ -34,7 +41,7 @@ func set_move_vec(_move_vec: Vector2):
 
 func increase_speed():
 	max_speed += 1
-	drag = accel / max_speed
+	update_drag()
 
 func _physics_process(_delta):
 	if !body or dead:

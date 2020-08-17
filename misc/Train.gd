@@ -5,8 +5,13 @@ var cur_speed = 0.0
 var accel_rate = 0.5
 var player = null
 
+export var visual_only = false
+
 func _ready():
 	$BoardTrainArea.connect("body_entered", self, "on_body_enter")
+	if visual_only:
+		$SmokeStack/SmokeParticlesFakeMovement.emitting = true
+		$AnimationPlayer.play("run")
 
 func on_body_enter(body: PhysicsBody2D):
 	if train_running:
@@ -25,8 +30,11 @@ func _physics_process(delta):
 	$AnimationPlayer.play("run", cur_speed / 20.0)
 	cur_speed += accel_rate * delta
 	var coll = move_and_collide(Vector2.LEFT * cur_speed)
-	if coll and coll.collider.has_method("hurt"):
+	if coll and coll.collider.has_method("hurt") and "give_points_on_kill" in coll.collider:
+		coll.collider.set("give_points_on_kill", false)
 		coll.collider.hurt(100, Vector2.LEFT)
 	player.global_position = global_position
 	if global_position.x < -300:
-		print('load next level')
+		StatsManager.save_player_weapons(player)
+		StatsManager.points += player.gets_points_gained_this_session()
+		LevelManager.load_next_level()

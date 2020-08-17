@@ -109,6 +109,7 @@ tracks/4/keys = {
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
+wep_name = "pistol"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3, 2 )
@@ -123,7 +124,7 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 592, 145, 16, 15 )
 
 [node name="BulletSpawner" type="Position2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 6, 0 )
 script = ExtResource( 4 )
 
 [node name="DeleteTimer" type="Timer" parent="."]

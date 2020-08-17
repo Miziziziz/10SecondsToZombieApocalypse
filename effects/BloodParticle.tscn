@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=1]
+[ext_resource path="res://effects/BloodParticle.gd" type="Script" id=2]
+
+[node name="BloodParticle" type="Node2D" groups=[
+"instance",
+]]
+self_modulate = Color( 0.290196, 0.0784314, 0.0666667, 1 )
+z_index = -1
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.290196, 0.0784314, 0.0666667, 1 )
+rotation = 1.57079
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 564, 209, 8, 10 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="show"]

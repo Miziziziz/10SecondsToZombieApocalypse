@@ -8,6 +8,8 @@ signal done_shooting
 
 var is_shooting = false
 
+export var wep_name = ""
+
 func shoot():
 	if is_shooting:
 		return

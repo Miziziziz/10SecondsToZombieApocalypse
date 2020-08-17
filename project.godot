@@ -21,8 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieApocMizJam"
-run/main_scene="res://World.tscn"
+run/main_scene="res://levels/World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+StatsManager="*res://singletons/StatsManager.tscn"
+LevelManager="*res://singletons/LevelManager.tscn"
 
 [display]
 

@@ -12,7 +12,7 @@ func update_velocity(velocity: Vector2):
 		move_particles.emitting = false
 		return
 	var velo_len = velocity.length()
-	if velo_len < 50.0:
+	if velo_len < 30.0:
 		anim_player.play("idle", 0.05)
 		move_particles.emitting = false
 	else:

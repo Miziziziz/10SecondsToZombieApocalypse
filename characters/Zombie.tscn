@@ -2,7 +2,7 @@
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Zombie.gd" type="Script" id=2]
-[ext_resource path="res://characters/HealthManager.gd" type="Script" id=3]
+[ext_resource path="res://characters/HealthManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=4]
 [ext_resource path="res://characters/AnimationManager.gd" type="Script" id=5]
 [ext_resource path="res://characters/HitBox.gd" type="Script" id=6]
@@ -170,14 +170,14 @@ tracks/2/keys = {
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 8.78949
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=7]
 radius = 11.6041
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 5.35087
+[sub_resource type="CircleShape2D" id=8]
+radius = 7.98327
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "zombies",
@@ -216,6 +216,7 @@ explosiveness = 0.92
 local_coords = false
 direction = Vector2( 0, -1 )
 initial_velocity = 30.0
+color = Color( 0.764706, 0.72549, 0.631373, 1 )
 
 [node name="CharacterMover" type="Node2D" parent="."]
 script = ExtResource( 1 )
@@ -227,17 +228,17 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterMover/ZombieRepeller"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="ZombieAttractor" type="Area2D" parent="CharacterMover"]
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterMover/ZombieAttractor"]
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
-[node name="HealthManager" type="Node2D" parent="."]
-script = ExtResource( 3 )
+[node name="HealthManager" parent="." instance=ExtResource( 3 )]
+max_health = 1
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -253,6 +254,6 @@ collision_mask = 0
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 [connection signal="timeout" from="AttackTimer" to="." method="finish_attack"]
 [connection signal="timeout" from="PauseAfterAttackTimer" to="." method="set_chase_state"]

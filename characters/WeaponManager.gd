@@ -2,7 +2,7 @@ extends Node2D
 
 onready var hand = $Hand
 
-var total_slots = 3
+var total_slots = 1
 var slots_used = 0
 var cur_weapon : Weapon
 

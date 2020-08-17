@@ -137,6 +137,7 @@ tracks/6/keys = {
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
+wep_name = "shotgun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -152,16 +153,16 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 624, 145, 16, 16 )
 
 [node name="BulletSpawner" type="Position2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 6.24745, 0 )
 script = ExtResource( 4 )
 
 [node name="BulletSpawner2" type="Position2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 6.24745, 0 )
 rotation = -0.261799
 script = ExtResource( 4 )
 
 [node name="BulletSpawner3" type="Position2D" parent="."]
-position = Vector2( 9, 0 )
+position = Vector2( 6.24745, 0 )
 rotation = 0.261799
 script = ExtResource( 4 )
 

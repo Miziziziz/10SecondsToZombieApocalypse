@@ -74,6 +74,7 @@ func has_line_of_sight(end_pos: Vector2):
 		return false
 	return true
 
+var give_points_on_kill=true
 func hurt(damage, dir=Vector2.ZERO):
 	health_manager.hurt(damage, dir)
 
@@ -82,7 +83,8 @@ func kill():
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	character_mover.set_move_vec(Vector2.ZERO)
 	character_mover.dead = true
-	player.add_points(1)
+	if give_points_on_kill:
+		player.add_points(1)
 	$Graphics/AnimationManager/MoveCPUParticles2D.emitting = false
 
 func get_move_vec():

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://singletons/StatsManager.gd" type="Script" id=1]
+
+[node name="StatsManager" type="Node"]
+script = ExtResource( 1 )
