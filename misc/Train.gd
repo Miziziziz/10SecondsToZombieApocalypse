@@ -12,6 +12,8 @@ func _ready():
 	if visual_only:
 		$SmokeStack/SmokeParticlesFakeMovement.emitting = true
 		$AnimationPlayer.play("run")
+		$TrainLoopSound.play()
+		#$TrainLoopSound/AnimationPlayer.play("fadein")
 
 func on_body_enter(body: PhysicsBody2D):
 	if train_running:
@@ -23,6 +25,7 @@ func on_body_enter(body: PhysicsBody2D):
 func start_train():
 	$SmokeStack/SmokeParticles.emitting = true
 	train_running = true
+	$TrainStartSound.play()
 
 func _physics_process(delta):
 	if !train_running:

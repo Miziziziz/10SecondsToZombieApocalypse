@@ -14,6 +14,9 @@ var player : KinematicBody2D
 var min_attack_range = 11
 var max_attack_range = 20
 
+signal attacked
+signal alerted
+
 func _ready():
 	health_manager.connect("dead", self, "kill")
 	health_manager.connect("dead", animation_manager, "kill")
@@ -34,6 +37,7 @@ func set_state_chase():
 
 func process_idle_state(_delta):
 	if has_line_of_sight(player.global_position):
+		emit_signal("alerted")
 		cur_state = STATES.CHASING
 
 func process_chase_state(_delta):
@@ -49,6 +53,7 @@ func start_attack():
 	$AttackTimer.start()
 	$Graphics/AnimationManager/AnimationPlayer.play("attack")
 	character_mover.set_move_vec(Vector2.ZERO)
+	emit_signal("attacked")
 
 func finish_attack():
 	animation_manager.pause = false

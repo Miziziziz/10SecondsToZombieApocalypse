@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/steam-train-daniel_simon.wav-3386a01a8552bea16d398d9d406abca6.sample"
+
+[deps]
+
+source_file="res://sfx/steam-train-daniel_simon.wav"
+dest_files=[ "res://.import/steam-train-daniel_simon.wav-3386a01a8552bea16d398d9d406abca6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

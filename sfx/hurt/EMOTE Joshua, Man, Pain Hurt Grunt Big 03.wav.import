@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav-468c05da3f5767a0df9ddbd6d2252386.sample"
+
+[deps]
+
+source_file="res://sfx/hurt/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav"
+dest_files=[ "res://.import/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav-468c05da3f5767a0df9ddbd6d2252386.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

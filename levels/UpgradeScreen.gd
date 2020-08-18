@@ -5,12 +5,17 @@ onready var points_label = $CanvasLayer/UpgradeScreen/PointsLeft
 onready var upgrade_health_button = $CanvasLayer/UpgradeScreen/GridContainer/UpgradeHealth
 onready var upgrade_speed_button = $CanvasLayer/UpgradeScreen/GridContainer/UpgradeSpeed
 onready var add_weapon_slot_button = $CanvasLayer/UpgradeScreen/GridContainer/AddWeaponSlot
-
+onready var continue_button = $CanvasLayer/UpgradeScreen/ContinueButton
+onready var click_sound_player = $ClickSound
 func _ready():
 	upgrade_health_button.connect("button_up", self, "upgrade_health")
 	upgrade_speed_button.connect("button_up", self, "upgrade_speed")
 	add_weapon_slot_button.connect("button_up", self, "add_weapon_slot")
-	$CanvasLayer/UpgradeScreen/ContinueButton.connect("button_up", self, "continue_to_next_level")
+	continue_button.connect("button_up", self, "continue_to_next_level")
+	upgrade_health_button.connect("button_up", click_sound_player, "play")
+	upgrade_speed_button.connect("button_up", click_sound_player, "play")
+	add_weapon_slot_button.connect("button_up", click_sound_player, "play")
+	continue_button.connect("button_up", click_sound_player, "play")
 	update_display()
 
 func _process(_delta):

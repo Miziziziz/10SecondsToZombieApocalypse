@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Monster_03.wav-db2dae4704c39d2cd005cd8701966436.sample"
+
+[deps]
+
+source_file="res://sfx/zombies/Monster_03.wav"
+dest_files=[ "res://.import/Monster_03.wav-db2dae4704c39d2cd005cd8701966436.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

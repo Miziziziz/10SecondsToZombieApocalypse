@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/pistol.png" type="Texture" id=1]
 [ext_resource path="res://Weapons/Weapon.gd" type="Script" id=2]
 [ext_resource path="res://Weapons/MuzzleFlash.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Weapons/BulletSpawner.gd" type="Script" id=4]
 [ext_resource path="res://sfx/gunshots/A_34P.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/clicks/click.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -140,7 +141,6 @@ texture = ExtResource( 1 )
 region_rect = Rect2( 592, 145, 16, 15 )
 
 [node name="BulletSpawner" type="Position2D" parent="."]
-position = Vector2( 6, 0 )
 script = ExtResource( 4 )
 
 [node name="DeleteTimer" type="Timer" parent="."]
@@ -156,4 +156,8 @@ volume_db = 4.0
 bus = "sfx"
 
 [node name="MuzzleFlash" parent="." instance=ExtResource( 3 )]
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "sfx"
 [connection signal="timeout" from="DeleteTimer" to="." method="queue_free"]

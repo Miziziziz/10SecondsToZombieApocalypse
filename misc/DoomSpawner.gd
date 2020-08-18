@@ -9,6 +9,7 @@ func _ready():
 
 func start_spawning():
 	#$SpawnTimer.start()
+	$StartSound.play()
 	spawn()
 
 func spawn():

@@ -29,6 +29,10 @@ config/icon="res://icon.png"
 StatsManager="*res://singletons/StatsManager.tscn"
 LevelManager="*res://singletons/LevelManager.tscn"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 mouse_cursor/custom_image="res://assets/crosshair32.png"

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/steam_train_loop.wav-5c6f7702c11c27415c56a3ab8660c149.sample"
+
+[deps]
+
+source_file="res://sfx/steam_train_loop.wav"
+dest_files=[ "res://.import/steam_train_loop.wav-5c6f7702c11c27415c56a3ab8660c149.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

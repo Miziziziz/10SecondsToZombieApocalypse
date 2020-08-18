@@ -16,6 +16,7 @@ func hurt(damage: int, dir=Vector2.ZERO):
 	if cur_health == 0:
 		return
 	cur_health -= damage
+	$HurtSounds.play()
 	blood_spawner.spray_blood(dir)
 	emit_signal("hurt")
 	if cur_health <= 0:

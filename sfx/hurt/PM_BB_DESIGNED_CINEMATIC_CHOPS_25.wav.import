@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PM_BB_DESIGNED_CINEMATIC_CHOPS_25.wav-36b875d6239870539bfc2ac158ef72f0.sample"
+
+[deps]
+
+source_file="res://sfx/hurt/PM_BB_DESIGNED_CINEMATIC_CHOPS_25.wav"
+dest_files=[ "res://.import/PM_BB_DESIGNED_CINEMATIC_CHOPS_25.wav-36b875d6239870539bfc2ac158ef72f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

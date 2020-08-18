@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/W_24P.wav-3df5b40fd38ee311a908643309c81ce5.sample"
+
+[deps]
+
+source_file="res://sfx/gunshots/W_24P.wav"
+dest_files=[ "res://.import/W_24P.wav-3df5b40fd38ee311a908643309c81ce5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Zombie.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://characters/AnimationManager.gd" type="Script" id=5]
 [ext_resource path="res://characters/HitBox.gd" type="Script" id=6]
 [ext_resource path="res://sfx/StepSounds.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sfx/PlayRandomSound.gd" type="Script" id=8]
+[ext_resource path="res://sfx/zombies/zombie-5.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/zombies/zombie-6.wav" type="AudioStream" id=10]
+[ext_resource path="res://sfx/zombies/zombie-24.wav" type="AudioStream" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.0
@@ -282,6 +286,22 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 8 )
+
+[node name="PlayAttackSound" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayAttackSound"]
+stream = ExtResource( 11 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="PlayAttackSound"]
+stream = ExtResource( 9 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="PlayAttackSound"]
+stream = ExtResource( 10 )
+bus = "sfx"
+[connection signal="attacked" from="." to="PlayAttackSound" method="play"]
 [connection signal="timeout" from="CharacterMover/Timer" to="CharacterMover" method="increase_speed"]
 [connection signal="timeout" from="AttackTimer" to="." method="finish_attack"]
 [connection signal="timeout" from="PauseAfterAttackTimer" to="." method="set_chase_state"]

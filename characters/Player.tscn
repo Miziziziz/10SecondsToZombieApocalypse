@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player.gd" type="Script" id=2]
@@ -17,6 +17,14 @@
 [ext_resource path="res://assets/ui/KLEINTEN.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://player_ui/TimerDisplay.gd" type="Script" id=16]
 [ext_resource path="res://sfx/StepSounds.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sfx/death_screams/Scream_Male_02.wav" type="AudioStream" id=18]
+[ext_resource path="res://sfx/death_screams/Scream_Male_04.wav" type="AudioStream" id=19]
+[ext_resource path="res://sfx/death_screams/Scream_Male_00.wav" type="AudioStream" id=20]
+[ext_resource path="res://sfx/death_screams/Scream_Male_01.wav" type="AudioStream" id=21]
+[ext_resource path="res://sfx/death_screams/Scream_Male_03.wav" type="AudioStream" id=22]
+[ext_resource path="res://sfx/PlayRandomSound.gd" type="Script" id=23]
+[ext_resource path="res://sfx/hurt/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav" type="AudioStream" id=24]
+[ext_resource path="res://sfx/bottle-shake-07.wav" type="AudioStream" id=25]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.32468
@@ -181,7 +189,7 @@ position = Vector2( 0, 6.00816 )
 
 [node name="AnimationManager" type="Node2D" parent="Graphics"]
 position = Vector2( 0, -2.17157 )
-rotation = -0.233874
+rotation = 0.233241
 scale = Vector2( 0.98, 1.02 )
 script = ExtResource( 5 )
 
@@ -224,6 +232,11 @@ script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupManager"]
 shape = SubResource( 5 )
+
+[node name="FuelPickupSound" type="AudioStreamPlayer2D" parent="PickupManager"]
+stream = ExtResource( 25 )
+volume_db = 10.0
+bus = "sfx"
 
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -594,4 +607,34 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="CanvasLayer/TimerDisplay"]
+
+[node name="PlayDeathSound" type="Node2D" parent="."]
+script = ExtResource( 23 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PlayDeathSound"]
+stream = ExtResource( 20 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="PlayDeathSound"]
+stream = ExtResource( 21 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="PlayDeathSound"]
+stream = ExtResource( 18 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="PlayDeathSound"]
+stream = ExtResource( 22 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="PlayDeathSound"]
+stream = ExtResource( 19 )
+bus = "sfx"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 24 )
+bus = "sfx"
+[connection signal="dead" from="HealthManager" to="PlayDeathSound" method="play"]
+[connection signal="hurt" from="HealthManager" to="HurtSound" method="play"]
+[connection signal="picked_up_fuel" from="PickupManager" to="PickupManager/FuelPickupSound" method="play"]
 [connection signal="timeout" from="CanvasLayer/TimerDisplay/Timer" to="CanvasLayer/TimerDisplay" method="decrement_time"]

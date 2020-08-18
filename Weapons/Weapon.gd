@@ -21,6 +21,7 @@ func finished_shooting():
 
 func pickup():
 	$CollisionShape2D.call_deferred("set_disabled", true)
+	$PickupSound.play()
 
 func destroy():
 	$DeleteTimer.start() # use timer so sound effect won't get cut off

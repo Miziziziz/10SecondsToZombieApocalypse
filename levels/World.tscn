@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://misc/Fuel.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://characters/Zombie.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Weapons/Pistol.tscn" type="PackedScene" id=6]
 [ext_resource path="res://misc/Train.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Weapons/Smg.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Weapons/Shotgun.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 277.599, 10 )
@@ -80,3 +82,9 @@ shape = SubResource( 1 )
 
 [node name="Train" parent="." instance=ExtResource( 7 )]
 position = Vector2( -16.7155, 106.892 )
+
+[node name="Shotgun" parent="." instance=ExtResource( 9 )]
+position = Vector2( 40, 88 )
+
+[node name="Smg" parent="." instance=ExtResource( 8 )]
+position = Vector2( 24, 56 )
