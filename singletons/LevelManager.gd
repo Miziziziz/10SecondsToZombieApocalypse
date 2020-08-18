@@ -1,11 +1,11 @@
 extends Node
 
 var level_list = [
-	"res://levels/World.tscn",
-	"res://levels/World.tscn",
-	"res://levels/World.tscn",
-	"res://levels/World.tscn",
-	"res://levels/World.tscn",
+	"res://levels/Tutorial.tscn",
+	"res://levels/WareHouse.tscn",
+	"res://levels/LittleTownship.tscn",
+	"res://levels/OldFieldHouses.tscn",
+	"res://levels/MechanicsStation.tscn"
 ]
 var cur_level_ind = 0
 

@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieApocMizJam"
-run/main_scene="res://levels/World.tscn"
+run/main_scene="res://levels/Tutorial.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -35,8 +35,11 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/size/fullscreen=true
 mouse_cursor/custom_image="res://assets/crosshair32.png"
 mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

@@ -3,8 +3,11 @@ extends Label
 signal out_of_time
 
 var time_left = 10
+export var activated = true
 
 func start():
+	if !activated:
+		return
 	$Timer.start()
 	$ClockSoundTimer.start()
 	$ClockSounds.play()

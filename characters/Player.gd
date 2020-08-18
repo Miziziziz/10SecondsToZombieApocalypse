@@ -14,6 +14,8 @@ var boarded_train = false
 onready var start_position = global_position
 var started = false
 
+signal collected_all_fuel
+
 func _ready():
 	health_manager.max_health = StatsManager.player_health
 	health_manager.cur_health = StatsManager.player_health
@@ -22,6 +24,7 @@ func _ready():
 	weapons_held_display.slots_unlocked = StatsManager.player_weapon_slots
 	stats_display.points_count = StatsManager.points
 	stats_display.update_display()
+	stats_display.connect("collected_all_fuel", self, "emit_collected_all_fuel")
 	
 	health_manager.connect("dead", self, "kill")
 	health_manager.connect("dead", animation_manager, "kill")
@@ -109,3 +112,6 @@ func load_weapons_list(weapon_names: Array):
 
 func gets_points_gained_this_session():
 	return stats_display.points_gained_this_level
+
+func emit_collected_all_fuel():
+	emit_signal("collected_all_fuel")

@@ -5,7 +5,7 @@ const STAT_MAX = 9
 var player_health = 1
 var player_speed = 1
 var player_weapon_slots = 1
-var points = 100
+var points = 0
 
 func upgrade_speed():
 	if player_speed < STAT_MAX and spend_points(get_upgrade_cost_speed()):
@@ -52,3 +52,4 @@ func reset_stats():
 	player_health = 1
 	player_speed = 1
 	player_weapon_slots = 1
+	weapon_list = []
