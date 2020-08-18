@@ -21,14 +21,13 @@ func play_new_game():
 	get_tree().change_scene(level_list[cur_level_ind])
 
 func load_next_level():
-	if cur_level == "upgrade_screen":
+	if cur_level_ind+1 >= level_list.size():
+		load_main_menu()
+	elif cur_level == "upgrade_screen":
 		cur_level = "gameplay"
 		cur_level_ind += 1
 		get_tree().call_group("instance", "queue_free")
-		if cur_level_ind >= level_list.size():
-			load_main_menu()
-		else:
-			get_tree().change_scene(level_list[cur_level_ind])
+		get_tree().change_scene(level_list[cur_level_ind])
 	else:
 		load_upgrade_screen()
 

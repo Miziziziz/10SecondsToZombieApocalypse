@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/KLEINTEN.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://player_ui/UITemplate.tres" type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.109804, 0.0509804, 0.0392157, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,28 +29,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="Panel" type="Panel" parent="."]
+margin_left = 474.0
+margin_top = 217.0
+margin_right = 567.0
+margin_bottom = 331.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -22.0
-margin_right = 20.0
-margin_bottom = 22.0
+margin_top = -67.3571
+margin_right = 38.0
+margin_bottom = 14.6429
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayButton" type="Button" parent="GridContainer"]
-margin_right = 38.0
-margin_bottom = 20.0
+margin_right = 58.0
+margin_bottom = 39.0
 text = "play"
 
 [node name="ExitButton" type="Button" parent="GridContainer"]
-margin_top = 24.0
-margin_right = 38.0
-margin_bottom = 44.0
+margin_top = 43.0
+margin_right = 58.0
+margin_bottom = 82.0
 text = "exit"
 
 [node name="Title" type="Label" parent="."]
@@ -44,11 +70,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -108.5
-margin_top = -57.9692
-margin_right = 108.5
-margin_bottom = -43.9692
-text = "10 seconds to zombie apocalypse"
+margin_left = -336.0
+margin_top = -165.935
+margin_right = 336.0
+margin_bottom = -120.935
+custom_fonts/font = SubResource( 3 )
+text = "Ten Seconds to Zombie Apocalypse"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Controls" type="Label" parent="."]
 anchor_left = 0.5
@@ -56,22 +86,27 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -108.5
-margin_top = 47.4523
-margin_right = 108.5
-margin_bottom = 129.452
+margin_top = 63.4523
+margin_right = 139.5
+margin_bottom = 190.452
 text = "WASD - move
 Mouse - aim
 Left Mouse Button - shoot
 R - restart
 Esc - Exit"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Signature" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.341176 )
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 8.4801
-margin_top = -40.4976
-margin_right = 251.48
-margin_bottom = -9.49756
+margin_left = 3.14377
+margin_top = -13.8008
+margin_right = 246.144
+margin_bottom = 17.1992
+custom_fonts/font = SubResource( 1 )
 text = "Created by Yeeteth Von Yeetenheimer
 Y3JlYXRlZCBieSBtaXppeml6aXo="

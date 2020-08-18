@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://player_ui/DynFont.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/ui/KLEINTEN.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://player_ui/TimerDisplay.gd" type="Script" id=16]
+[ext_resource path="res://sfx/StepSounds.tscn" type="PackedScene" id=17]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.32468
@@ -141,6 +142,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../StepSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -162,6 +180,9 @@ shape = SubResource( 1 )
 position = Vector2( 0, 6.00816 )
 
 [node name="AnimationManager" type="Node2D" parent="Graphics"]
+position = Vector2( 0, -2.17157 )
+rotation = -0.233874
+scale = Vector2( 0.98, 1.02 )
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
@@ -186,6 +207,8 @@ local_coords = false
 direction = Vector2( 0, -1 )
 initial_velocity = 30.0
 color = Color( 0.764706, 0.72549, 0.631373, 1 )
+
+[node name="StepSounds" parent="Graphics" instance=ExtResource( 17 )]
 
 [node name="CharacterMover" type="Node2D" parent="."]
 script = ExtResource( 1 )

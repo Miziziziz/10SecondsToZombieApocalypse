@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Zombie.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/base_pack/monochrome_transparent_packed.png" type="Texture" id=4]
 [ext_resource path="res://characters/AnimationManager.gd" type="Script" id=5]
 [ext_resource path="res://characters/HitBox.gd" type="Script" id=6]
+[ext_resource path="res://sfx/StepSounds.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.04374
@@ -169,6 +170,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ), Vector2( 1.02, 0.98 ), Vector2( 0.98, 1.02 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../StepSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 8.78949
@@ -192,6 +210,9 @@ shape = SubResource( 1 )
 position = Vector2( 0, 6.00816 )
 
 [node name="AnimationManager" type="Node2D" parent="Graphics"]
+position = Vector2( 0, -2.17157 )
+rotation = -0.233874
+scale = Vector2( 0.98, 1.02 )
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]
@@ -217,6 +238,9 @@ local_coords = false
 direction = Vector2( 0, -1 )
 initial_velocity = 30.0
 color = Color( 0.764706, 0.72549, 0.631373, 1 )
+
+[node name="StepSounds" parent="Graphics" instance=ExtResource( 7 )]
+vol = 0.7
 
 [node name="CharacterMover" type="Node2D" parent="."]
 script = ExtResource( 1 )
