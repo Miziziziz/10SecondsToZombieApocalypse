@@ -9,6 +9,9 @@ var level_list = [
 	"res://levels/ShottyIntro.tscn",
 	"res://levels/PartyGathering.tscn",
 	"res://levels/FirstMiniBoss.tscn",
+	"res://levels/Armories.tscn",
+	"res://levels/ToughGuys.tscn",
+	"res://levels/Dorms.tscn",
 ]
 var cur_level_ind = 0
 
