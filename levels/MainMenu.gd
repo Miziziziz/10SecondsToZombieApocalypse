@@ -5,7 +5,7 @@ func _ready():
 	$GridContainer/PlayButton.connect("button_up", self, "play_game")
 	$GridContainer/ExitButton.connect("button_up", self, "exit_game")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 

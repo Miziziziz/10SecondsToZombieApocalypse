@@ -204,7 +204,7 @@ radius = 8.78949
 radius = 11.6041
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 7.98327
+radius = 10.3116
 
 [node name="Zombie" type="KinematicBody2D" groups=[
 "zombies",

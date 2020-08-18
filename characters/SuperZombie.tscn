@@ -198,7 +198,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 8.08588
+radius = 9.93924
 
 [node name="SuperZombie" type="KinematicBody2D" groups=[
 "zombies",
@@ -239,9 +239,7 @@ shape = SubResource( 3 )
 position = Vector2( 0, 6.00816 )
 
 [node name="AnimationManager" type="Node2D" parent="Graphics"]
-position = Vector2( 0, -2.17157 )
-rotation = -0.233874
-scale = Vector2( 0.98, 1.02 )
+scale = Vector2( 1.02, 0.98 )
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/AnimationManager"]

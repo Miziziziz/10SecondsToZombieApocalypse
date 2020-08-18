@@ -5,7 +5,10 @@ var level_list = [
 	"res://levels/WareHouse.tscn",
 	"res://levels/LittleTownship.tscn",
 	"res://levels/OldFieldHouses.tscn",
-	"res://levels/MechanicsStation.tscn"
+	"res://levels/MechanicsStation.tscn",
+	"res://levels/ShottyIntro.tscn",
+	"res://levels/PartyGathering.tscn",
+	"res://levels/FirstMiniBoss.tscn",
 ]
 var cur_level_ind = 0
 
