@@ -27,7 +27,7 @@ func _ready():
 		zombie_repeller = $ZombieRepeller
 
 func set_speed(sp: int):
-	max_speed = 20 * sp + 80
+	max_speed = 10 * sp + 80
 	update_drag()
 
 func update_drag():

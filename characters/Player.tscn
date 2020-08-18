@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://characters/CharacterMover.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player.gd" type="Script" id=2]
@@ -25,6 +25,11 @@
 [ext_resource path="res://sfx/PlayRandomSound.gd" type="Script" id=23]
 [ext_resource path="res://sfx/hurt/EMOTE Joshua, Man, Pain Hurt Grunt Big 03.wav" type="AudioStream" id=24]
 [ext_resource path="res://sfx/bottle-shake-07.wav" type="AudioStream" id=25]
+[ext_resource path="res://sfx/PlaySequentialSounds.gd" type="Script" id=26]
+[ext_resource path="res://sfx/clock/ticking clock - tick1.wav" type="AudioStream" id=27]
+[ext_resource path="res://sfx/clock/ticking clock - tick3.wav" type="AudioStream" id=28]
+[ext_resource path="res://sfx/clock/ticking clock - tick4.wav" type="AudioStream" id=29]
+[ext_resource path="res://sfx/clock/ticking clock - tick2.wav" type="AudioStream" id=30]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.32468
@@ -608,6 +613,28 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="CanvasLayer/TimerDisplay"]
 
+[node name="ClockSoundTimer" type="Timer" parent="CanvasLayer/TimerDisplay"]
+
+[node name="ClockSounds" type="Node2D" parent="CanvasLayer/TimerDisplay"]
+script = ExtResource( 26 )
+vol = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/TimerDisplay/ClockSounds"]
+stream = ExtResource( 27 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="CanvasLayer/TimerDisplay/ClockSounds"]
+stream = ExtResource( 30 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="CanvasLayer/TimerDisplay/ClockSounds"]
+stream = ExtResource( 28 )
+bus = "sfx"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="CanvasLayer/TimerDisplay/ClockSounds"]
+stream = ExtResource( 29 )
+bus = "sfx"
+
 [node name="PlayDeathSound" type="Node2D" parent="."]
 script = ExtResource( 23 )
 
@@ -638,3 +665,4 @@ bus = "sfx"
 [connection signal="hurt" from="HealthManager" to="HurtSound" method="play"]
 [connection signal="picked_up_fuel" from="PickupManager" to="PickupManager/FuelPickupSound" method="play"]
 [connection signal="timeout" from="CanvasLayer/TimerDisplay/Timer" to="CanvasLayer/TimerDisplay" method="decrement_time"]
+[connection signal="timeout" from="CanvasLayer/TimerDisplay/ClockSoundTimer" to="CanvasLayer/TimerDisplay/ClockSounds" method="play"]
