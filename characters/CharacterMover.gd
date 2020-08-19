@@ -40,7 +40,7 @@ func set_move_vec(_move_vec: Vector2):
 	move_vec = _move_vec.normalized()
 
 func increase_speed():
-	max_speed += 1
+	max_speed += 0.7
 	update_drag()
 
 func _physics_process(_delta):

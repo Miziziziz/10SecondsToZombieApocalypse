@@ -68,6 +68,9 @@ func _process(_delta):
 	if Input.is_action_pressed("move_left"):
 		move_vec += Vector2.LEFT
 	character_mover.set_move_vec(move_vec)
+	
+	if Input.is_action_just_pressed("shoot"):
+		weapon_manager.shoot()
 
 func hurt(damage, dir=Vector2.ZERO):
 	if boarded_train:

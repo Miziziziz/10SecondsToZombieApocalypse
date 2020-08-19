@@ -1,0 +1,401 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://misc/DoomSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/TileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://misc/Train.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Weapons/Shotgun.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 277.599, 10 )
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navigation",
+]]
+
+[node name="TileMap" parent="Navigation2D" instance=ExtResource( 4 )]
+tile_data = PoolIntArray( -524304, 9, 0, -524303, 9, 0, -524302, 9, 0, -524301, 9, 0, -524300, 8, 0, -524299, 9, 0, -524298, 20, 0, -524297, 23, 0, -524296, 20, 0, -524295, 20, 0, -524294, 9, 0, -524293, 9, 0, -524292, 9, 0, -524291, 20, 0, -524290, 9, 0, -524289, 8, 0, -589824, 9, 0, -589823, 9, 0, -589822, 9, 0, -589821, 20, 0, -589820, 20, 0, -589819, 20, 0, -589818, 20, 0, -589817, 8, 0, -589816, 20, 0, -589815, 9, 0, -589814, 8, 0, -589813, 9, 0, -589812, 9, 0, -589811, 9, 0, -589810, 20, 0, -589809, 20, 0, -458768, 9, 0, -458763, 1, 0, -458754, 1, 0, -458753, 1, 0, -524283, 1, 0, -524273, 20, 0, -393232, 20, 0, -393224, 1, 0, -393223, 1, 0, -393221, 1, 0, -393220, 1, 0, -393217, 1, 0, -458746, 1, 0, -458745, 1, 0, -458743, 1, 0, -458739, 1, 0, -458737, 20, 0, -327696, 23, 0, -327693, 9, 0, -327692, 8, 0, -327691, 20, 0, -327690, 9, 0, -327689, 8, 0, -327688, 9, 0, -327687, 20, 0, -327686, 23, 0, -327685, 9, 0, -327684, 20, 0, -327683, 8, 0, -327682, 20, 0, -327681, 20, 0, -393214, 20, 0, -393213, 20, 0, -393212, 20, 0, -393211, 9, 0, -393210, 9, 0, -393209, 9, 0, -393208, 20, 0, -393207, 23, 0, -393206, 20, 0, -393205, 20, 0, -393204, 9, 0, -393203, 1, 0, -393201, 23, 0, -262160, 20, 0, -262158, 1, 0, -262157, 9, 0, -262154, 1, 0, -262149, 1, 0, -327679, 1, 0, -327678, 1, 0, -327671, 1, 0, -327670, 1, 0, -327668, 20, 0, -327667, 1, 0, -327666, 1, 0, -327665, 20, 0, -196623, 1, 0, -196622, 1, 0, -196621, 20, 0, -196617, 1, 0, -196616, 1, 0, -196615, 1, 0, -262139, 1, 0, -262136, 1, 0, -262134, 1, 0, -262132, 9, 0, -262130, 1, 0, -131087, 1, 0, -131085, 20, 0, -131082, 20, 0, -131081, 20, 0, -131080, 9, 0, -131079, 9, 0, -131078, 9, 0, -131077, 9, 0, -131076, 8, 0, -131075, 20, 0, -131074, 20, 0, -131073, 23, 0, -196608, 8, 0, -196607, 20, 0, -196606, 20, 0, -196605, 20, 0, -196604, 20, 0, -196603, 20, 0, -196602, 20, 0, -196601, 20, 0, -196600, 20, 0, -196599, 20, 0, -196596, 9, 0, -196594, 1, 0, -65552, 20, 0, -65551, 1, 0, -65549, 9, 0, -65540, 1, 0, -65539, 1, 0, -131067, 1, 0, -131066, 1, 0, -131065, 1, 0, -131060, 9, 0, -131057, 20, 0, -16, 9, 0, -15, 1, 0, -13, 9, 0, -2, 1, 0, -1, 1, 0, -65534, 1, 0, -65533, 1, 0, -65528, 1, 0, -65526, 1, 0, -65524, 9, 0, -65521, 20, 0, 65520, 9, 0, 65523, 20, 0, 65524, 20, 0, 65525, 23, 0, 65526, 20, 0, 65527, 20, 0, 65528, 20, 0, 65529, 20, 0, 65530, 9, 0, 65531, 9, 0, 65532, 9, 0, 65533, 9, 0, 65534, 20, 0, 65535, 20, 0, 2, 20, 0, 3, 9, 0, 4, 9, 0, 5, 20, 0, 6, 8, 0, 7, 20, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 15, 23, 0, 131056, 20, 0, 131061, 1, 0, 131062, 1, 0, 131063, 1, 0, 131064, 1, 0, 131067, 1, 0, 65536, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65551, 9, 0, 196592, 20, 0, 196595, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131074, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131082, 1, 0, 131083, 1, 0, 131087, 9, 0, 262128, 20, 0, 262129, 9, 0, 262130, 9, 0, 262131, 9, 0, 262132, 9, 0, 262133, 9, 0, 262134, 20, 0, 262135, 23, 0, 262136, 8, 0, 262137, 8, 0, 262138, 9, 0, 262139, 20, 0, 262140, 20, 0, 262141, 20, 0, 262142, 9, 0, 262143, 9, 0, 196610, 20, 0, 196611, 20, 0, 196612, 20, 0, 196613, 9, 0, 196614, 8, 0, 196615, 8, 0, 196616, 20, 0, 196617, 20, 0, 196618, 20, 0, 196619, 9, 0, 196620, 23, 0, 196621, 20, 0, 196622, 23, 0, 196623, 9, 0, 327665, 2, 0, 327672, 1, 0, 327673, 1, 0, 327674, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 2, 0, 262148, 2, 0, 262156, 2, 0, 393201, 2, 0, 393202, 2, 0, 393203, 2, 0, 393204, 2, 0, 393205, 2, 0, 393207, 1, 0, 327682, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327690, 2, 0, 327691, 2, 0, 327693, 2, 0, 458739, 2, 0, 458740, 1, 0, 458741, 1, 0, 458742, 1, 0, 458743, 1, 0, 458744, 1, 0, 458745, 536870940, 0, 393220, 1, 0, 393221, 1, 0, 393222, 2, 0, 393223, 2, 0, 393226, 1, 0, 393228, 1, 0, 524273, 1, 0, 524274, 1, 0, 524275, 1, 0, 524276, 1, 0, 524277, 1, 0, 524278, 2, 0, 524279, 1, 0, 524280, 1, 0, 524281, 536870940, 0, 524282, -536870886, 0, 524283, -536870886, 0, 524284, -536870886, 0, 524285, -536870886, 0, 524286, -536870886, 0, 524287, -536870886, 0, 458752, -536870886, 0, 458753, -536870886, 0, 458754, -536870886, 0, 458755, -536870886, 0, 458756, -536870886, 0, 458757, -536870886, 0, 458758, -536870886, 0, 458759, -536870886, 0, 458760, -536870886, 0, 458761, -536870886, 0, 458762, -536870886, 0, 458763, -536870886, 0, 458764, -536870886, 0, 458765, -536870886, 0, 458766, -536870886, 0, 458767, -536870886, 0, 458768, -536870886, 0, 589810, 2, 0, 589811, 1, 0, 589812, 1, 0, 589816, 1, 0, 589817, 536870940, 0, 589820, 2, 0, 589822, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524301, 2, 0, 655349, 536870913, 0, 589824, 2, 0, 851954, 1, 0, 851955, 27, 0, 851956, 20, 0, 851957, 22, 0, 851958, 23, 0, 851959, 18, 0, 851960, 17, 0, 851961, 19, 0, 851963, 21, 0, 917490, 2, 0, 917491, 15, 0, 917492, 9, 0, 917493, 8, 0, 917494, 10, 0, 917495, 12, 0, 917496, 13, 0, 917497, 5, 0, 917498, 16, 0, 917499, 11, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 11.3393, 114.517 )
+
+[node name="TimerDisplay" parent="Player/CanvasLayer" index="4"]
+out_of_time_text = "FIGHT"
+
+[node name="PlayerBarrier" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 0, -160.513 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 0, 161.22 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 267.993, -0.707108 )
+rotation = -1.57079
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( -267.993, -0.707108 )
+rotation = -1.57079
+shape = SubResource( 1 )
+
+[node name="DoomSpawner" parent="." instance=ExtResource( 3 )]
+
+[node name="Train" parent="." instance=ExtResource( 7 )]
+position = Vector2( -16.7155, 106.892 )
+activated = false
+
+[node name="Shotgun" parent="." instance=ExtResource( 9 )]
+position = Vector2( -16, 32 )
+
+[node name="Shotgun2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -32, 32 )
+
+[node name="Shotgun112" parent="." instance=ExtResource( 9 )]
+position = Vector2( 64, 32 )
+
+[node name="Shotgun113" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, 32 )
+
+[node name="Shotgun114" parent="." instance=ExtResource( 9 )]
+position = Vector2( 144, 32 )
+
+[node name="Shotgun3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, 32 )
+
+[node name="Shotgun4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -64, 32 )
+
+[node name="Shotgun5" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, 32 )
+
+[node name="Shotgun6" parent="." instance=ExtResource( 9 )]
+position = Vector2( -96, 32 )
+
+[node name="Shotgun7" parent="." instance=ExtResource( 9 )]
+position = Vector2( -112, 32 )
+
+[node name="Shotgun8" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128, 32 )
+
+[node name="Shotgun9" parent="." instance=ExtResource( 9 )]
+position = Vector2( -144, 32 )
+
+[node name="Shotgun10" parent="." instance=ExtResource( 9 )]
+position = Vector2( -160, 32 )
+
+[node name="Shotgun11" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, 32 )
+
+[node name="Shotgun12" parent="." instance=ExtResource( 9 )]
+position = Vector2( -192, 32 )
+
+[node name="Shotgun13" parent="." instance=ExtResource( 9 )]
+position = Vector2( -208, 32 )
+
+[node name="Shotgun14" parent="." instance=ExtResource( 9 )]
+position = Vector2( -16, -112 )
+
+[node name="Shotgun15" parent="." instance=ExtResource( 9 )]
+position = Vector2( -32, -112 )
+
+[node name="Shotgun16" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, -112 )
+
+[node name="Shotgun17" parent="." instance=ExtResource( 9 )]
+position = Vector2( -64, -112 )
+
+[node name="Shotgun18" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, -112 )
+
+[node name="Shotgun19" parent="." instance=ExtResource( 9 )]
+position = Vector2( -96, -112 )
+
+[node name="Shotgun20" parent="." instance=ExtResource( 9 )]
+position = Vector2( -112, -112 )
+
+[node name="Shotgun21" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128, -112 )
+
+[node name="Shotgun22" parent="." instance=ExtResource( 9 )]
+position = Vector2( -144, -112 )
+
+[node name="Shotgun23" parent="." instance=ExtResource( 9 )]
+position = Vector2( -160, -112 )
+
+[node name="Shotgun24" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, -112 )
+
+[node name="Shotgun25" parent="." instance=ExtResource( 9 )]
+position = Vector2( -192, -112 )
+
+[node name="Shotgun26" parent="." instance=ExtResource( 9 )]
+position = Vector2( -208, -112 )
+
+[node name="Shotgun27" parent="." instance=ExtResource( 9 )]
+position = Vector2( 96, -64 )
+
+[node name="Shotgun28" parent="." instance=ExtResource( 9 )]
+position = Vector2( 80, -64 )
+
+[node name="Shotgun29" parent="." instance=ExtResource( 9 )]
+position = Vector2( 64, -64 )
+
+[node name="Shotgun30" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, -64 )
+
+[node name="Shotgun31" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32, -64 )
+
+[node name="Shotgun32" parent="." instance=ExtResource( 9 )]
+position = Vector2( 16, -64 )
+
+[node name="Shotgun33" parent="." instance=ExtResource( 9 )]
+position = Vector2( 0, -64 )
+
+[node name="Shotgun34" parent="." instance=ExtResource( 9 )]
+position = Vector2( -16, -64 )
+
+[node name="Shotgun35" parent="." instance=ExtResource( 9 )]
+position = Vector2( -32, -64 )
+
+[node name="Shotgun36" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, -64 )
+
+[node name="Shotgun37" parent="." instance=ExtResource( 9 )]
+position = Vector2( -64, -64 )
+
+[node name="Shotgun100" parent="." instance=ExtResource( 9 )]
+position = Vector2( 160, -112 )
+
+[node name="Shotgun101" parent="." instance=ExtResource( 9 )]
+position = Vector2( 144, -112 )
+
+[node name="Shotgun102" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, -112 )
+
+[node name="Shotgun103" parent="." instance=ExtResource( 9 )]
+position = Vector2( 112, -112 )
+
+[node name="Shotgun104" parent="." instance=ExtResource( 9 )]
+position = Vector2( 208, 32 )
+
+[node name="Shotgun105" parent="." instance=ExtResource( 9 )]
+position = Vector2( 192, 32 )
+
+[node name="Shotgun106" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, 32 )
+
+[node name="Shotgun107" parent="." instance=ExtResource( 9 )]
+position = Vector2( 160, 32 )
+
+[node name="Shotgun108" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, 32 )
+
+[node name="Shotgun109" parent="." instance=ExtResource( 9 )]
+position = Vector2( 112, 32 )
+
+[node name="Shotgun110" parent="." instance=ExtResource( 9 )]
+position = Vector2( 96, 32 )
+
+[node name="Shotgun111" parent="." instance=ExtResource( 9 )]
+position = Vector2( 80, 32 )
+
+[node name="Shotgun38" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, -64 )
+
+[node name="Shotgun90" parent="." instance=ExtResource( 9 )]
+position = Vector2( 112, -16 )
+
+[node name="Shotgun91" parent="." instance=ExtResource( 9 )]
+position = Vector2( 96, -16 )
+
+[node name="Shotgun92" parent="." instance=ExtResource( 9 )]
+position = Vector2( 80, -16 )
+
+[node name="Shotgun93" parent="." instance=ExtResource( 9 )]
+position = Vector2( 64, -16 )
+
+[node name="Shotgun94" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, -16 )
+
+[node name="Shotgun95" parent="." instance=ExtResource( 9 )]
+position = Vector2( 80, -112 )
+
+[node name="Shotgun96" parent="." instance=ExtResource( 9 )]
+position = Vector2( 64, -112 )
+
+[node name="Shotgun97" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, -112 )
+
+[node name="Shotgun98" parent="." instance=ExtResource( 9 )]
+position = Vector2( 32, -112 )
+
+[node name="Shotgun99" parent="." instance=ExtResource( 9 )]
+position = Vector2( 16, -112 )
+
+[node name="Shotgun39" parent="." instance=ExtResource( 9 )]
+position = Vector2( -96, -64 )
+
+[node name="Shotgun40" parent="." instance=ExtResource( 9 )]
+position = Vector2( -112, -64 )
+
+[node name="Shotgun41" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128, -64 )
+
+[node name="Shotgun42" parent="." instance=ExtResource( 9 )]
+position = Vector2( -144, -64 )
+
+[node name="Shotgun43" parent="." instance=ExtResource( 9 )]
+position = Vector2( -160, -64 )
+
+[node name="Shotgun44" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, -64 )
+
+[node name="Shotgun77" parent="." instance=ExtResource( 9 )]
+position = Vector2( 16, -16 )
+
+[node name="Shotgun78" parent="." instance=ExtResource( 9 )]
+position = Vector2( 0, -16 )
+
+[node name="Shotgun79" parent="." instance=ExtResource( 9 )]
+position = Vector2( -16, -16 )
+
+[node name="Shotgun80" parent="." instance=ExtResource( 9 )]
+position = Vector2( -32, -16 )
+
+[node name="Shotgun81" parent="." instance=ExtResource( 9 )]
+position = Vector2( -48, -16 )
+
+[node name="Shotgun82" parent="." instance=ExtResource( 9 )]
+position = Vector2( -64, -16 )
+
+[node name="Shotgun83" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, -16 )
+
+[node name="Shotgun84" parent="." instance=ExtResource( 9 )]
+position = Vector2( -96, -16 )
+
+[node name="Shotgun85" parent="." instance=ExtResource( 9 )]
+position = Vector2( -112, -16 )
+
+[node name="Shotgun86" parent="." instance=ExtResource( 9 )]
+position = Vector2( -128, -16 )
+
+[node name="Shotgun87" parent="." instance=ExtResource( 9 )]
+position = Vector2( -144, -16 )
+
+[node name="Shotgun88" parent="." instance=ExtResource( 9 )]
+position = Vector2( -160, -16 )
+
+[node name="Shotgun89" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, -16 )
+
+[node name="Shotgun45" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, -48 )
+
+[node name="Shotgun46" parent="." instance=ExtResource( 9 )]
+position = Vector2( -176, -32 )
+
+[node name="Shotgun47" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -64 )
+
+[node name="Shotgun48" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -80 )
+
+[node name="Shotgun49" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -96 )
+
+[node name="Shotgun50" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -112 )
+
+[node name="Shotgun51" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, -16 )
+
+[node name="Shotgun52" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, 0 )
+
+[node name="Shotgun53" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, 16 )
+
+[node name="Shotgun71" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -48 )
+
+[node name="Shotgun72" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -32 )
+
+[node name="Shotgun73" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, -16 )
+
+[node name="Shotgun74" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, 0 )
+
+[node name="Shotgun75" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, 16 )
+
+[node name="Shotgun76" parent="." instance=ExtResource( 9 )]
+position = Vector2( -224, 32 )
+
+[node name="Shotgun54" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, 32 )
+
+[node name="Shotgun55" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, -16 )
+
+[node name="Shotgun56" parent="." instance=ExtResource( 9 )]
+position = Vector2( 144, -16 )
+
+[node name="Shotgun57" parent="." instance=ExtResource( 9 )]
+position = Vector2( 160, -16 )
+
+[node name="Shotgun58" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, -16 )
+
+[node name="Shotgun59" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, -32 )
+
+[node name="Shotgun60" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, -48 )
+
+[node name="Shotgun61" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, -64 )
+
+[node name="Shotgun62" parent="." instance=ExtResource( 9 )]
+position = Vector2( 160, -64 )
+
+[node name="Shotgun63" parent="." instance=ExtResource( 9 )]
+position = Vector2( 144, -64 )
+
+[node name="Shotgun64" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, -64 )
+
+[node name="Shotgun65" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, -80 )
+
+[node name="Shotgun66" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, -96 )
+
+[node name="Shotgun67" parent="." instance=ExtResource( 9 )]
+position = Vector2( 224, -112 )
+
+[node name="Shotgun68" parent="." instance=ExtResource( 9 )]
+position = Vector2( 208, -112 )
+
+[node name="Shotgun69" parent="." instance=ExtResource( 9 )]
+position = Vector2( 192, -112 )
+
+[node name="Shotgun70" parent="." instance=ExtResource( 9 )]
+position = Vector2( 176, -112 )
+
+[editable path="Player"]

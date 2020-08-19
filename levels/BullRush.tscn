@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://misc/Fuel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://misc/DoomSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/TileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/SuperZombie.tscn" type="PackedScene" id=6]
+[ext_resource path="res://misc/Train.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Weapons/Shotgun.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 277.599, 10 )
+
+[node name="World" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"navigation",
+]]
+
+[node name="TileMap" parent="Navigation2D" instance=ExtResource( 4 )]
+tile_data = PoolIntArray( -524301, 2, 0, -458763, 2, 0, -458759, 9, 0, -458758, 9, 0, -458757, 9, 0, -458756, 20, 0, -458755, 9, 0, -458754, 20, 0, -458753, 20, 0, -524288, 20, 0, -524287, 20, 0, -524286, 22, 0, -524285, 20, 0, -524284, 9, 0, -524283, 9, 0, -524278, 2, 0, -524277, 2, 0, -393231, 1, 0, -393227, 2, 0, -393226, 1, 0, -393223, 20, 0, -458747, 10, 0, -458743, 2, 0, -458742, 2, 0, -327695, 2, 0, -327694, 2, 0, -327693, 2, 0, -327690, 1, 0, -327687, 20, 0, -327681, 1, 0, -393215, 1, 0, -393211, 20, 0, -393207, 2, 0, -393206, 2, 0, -393205, 2, 0, -393202, 17, 0, -262159, 17, 0, -262158, 13, 0, -262157, 19, 0, -262156, 2, 0, -262155, 1, 0, -262154, 1, 0, -262151, 20, 0, -262148, 20, 0, -262147, 20, 0, -262146, 20, 0, -262145, 9, 0, -327680, 20, 0, -327679, 9, 0, -327675, 20, 0, -327671, 2, 0, -327669, 2, 0, -327666, 20, 0, -196624, 536870933, 0, -196623, 9, 0, -196622, 22, 0, -196621, 20, 0, -196615, 10, 0, -196613, 1, 0, -196612, 9, 0, -262141, 1, 0, -262139, 9, 0, -262135, 2, 0, -262134, 2, 0, -262132, 1, 0, -262131, 18, 0, -262130, 20, 0, -131088, 536870933, 0, -131087, 9, 0, -131086, 20, 0, -131085, 9, 0, -131084, 2, 0, -131079, 9, 0, -131078, 1, 0, -131076, 9, 0, -131074, 1, 0, -131073, 1, 0, -196603, 20, 0, -196596, 536870933, 0, -196595, 9, 0, -196594, 20, 0, -65551, 1, 0, -65549, 2, 0, -65548, 2, 0, -65543, 9, 0, -65540, 20, 0, -131067, 9, 0, -15, 1, 0, -14, 1, 0, -7, 22, 0, -4, 20, 0, -3, 20, 0, -2, 9, 0, -1, 20, 0, -65536, 22, 0, -65535, 10, 0, -65534, 9, 0, -65533, 9, 0, -65532, 20, 0, -65531, 20, 0, -65524, 2, 0, 65523, 1, 0, 65526, 9, 0, 65527, 9, 0, 65528, 20, 0, 65529, 20, 0, 65531, 1, 0, 5, 2, 0, 12, 2, 0, 131057, 2, 0, 131060, 1, 0, 131062, 9, 0, 65542, 2, 0, 65545, 2, 0, 65546, 2, 0, 65549, 2, 0, 196593, 2, 0, 196594, 2, 0, 196598, 20, 0, 131076, 1, 0, 131077, 1, 0, 131079, 1, 0, 131082, 2, 0, 131083, 2, 0, 131085, 2, 0, 262130, 2, 0, 262131, 2, 0, 262134, 9, 0, 262135, 20, 0, 262136, 9, 0, 262137, 22, 0, 262138, 20, 0, 262139, 9, 0, 262140, 9, 0, 262141, 20, 0, 262142, 9, 0, 262143, 10, 0, 196608, 9, 0, 196609, 9, 0, 196610, 20, 0, 196619, 2, 0, 196621, 2, 0, 327666, 2, 0, 327667, 2, 0, 327676, 2, 0, 393206, 2, 0, 393208, 2, 0, 393209, 2, 0, 393210, 2, 0, 393212, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327687, 2, 0, 327689, 2, 0, 327691, 2, 0, 327692, 2, 0, 458738, 2, 0, 458743, 2, 0, 393222, 2, 0, 393228, 2, 0, 524270, -536870886, 0, 524271, -536870886, 0, 524272, -536870886, 0, 524273, -536870886, 0, 524274, -536870886, 0, 524275, -536870886, 0, 524276, -536870886, 0, 524277, -536870886, 0, 524278, -536870886, 0, 524279, -536870886, 0, 524280, -536870886, 0, 524281, -536870886, 0, 524282, -536870886, 0, 524283, -536870886, 0, 524284, -536870886, 0, 524285, -536870886, 0, 524286, -536870886, 0, 524287, -536870886, 0, 458752, -536870886, 0, 458753, -536870886, 0, 458754, -536870886, 0, 458755, -536870886, 0, 458756, -536870886, 0, 458757, -536870886, 0, 458758, -536870886, 0, 458759, -536870886, 0, 458760, -536870886, 0, 458761, -536870886, 0, 458762, -536870886, 0, 458763, -536870886, 0, 458764, -536870886, 0, 458765, -536870886, 0, 458766, -536870886, 0, 458767, -536870886, 0, 458768, -536870886, 0, 589809, 2, 0, 589811, 2, 0, 589812, 2, 0, 589813, 2, 0, 589815, 2, 0, 589816, 2, 0, 589817, 2, 0, 524290, 2, 0, 524297, 2, 0, 524300, 2, 0, 524301, 2, 0, 655349, 536870913, 0, 851954, 1, 0, 851955, 27, 0, 851956, 20, 0, 851957, 22, 0, 851958, 23, 0, 851959, 18, 0, 851960, 17, 0, 851961, 19, 0, 851963, 21, 0, 917490, 2, 0, 917491, 15, 0, 917492, 9, 0, 917493, 8, 0, 917494, 10, 0, 917495, 12, 0, 917496, 13, 0, 917497, 5, 0, 917498, 16, 0, 917499, 11, 0 )
+
+[node name="SuperZombie" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( -128, 32 )
+
+[node name="SuperZombie2" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( -80, -96 )
+
+[node name="SuperZombie3" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( 64, -96 )
+
+[node name="SuperZombie4" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( 48, -32 )
+
+[node name="SuperZombie5" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( -32, -48 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 11.3393, 114.517 )
+
+[node name="Fuel" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, -32 )
+
+[node name="PlayerBarrier" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 0, -160.513 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 0, 161.22 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( 267.993, -0.707108 )
+rotation = -1.57079
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PlayerBarrier"]
+position = Vector2( -267.993, -0.707108 )
+rotation = -1.57079
+shape = SubResource( 1 )
+
+[node name="DoomSpawner" parent="." instance=ExtResource( 3 )]
+
+[node name="Train" parent="." instance=ExtResource( 7 )]
+position = Vector2( -16.7155, 106.892 )
+
+[node name="Shotgun" parent="." instance=ExtResource( 9 )]
+position = Vector2( 64, 32 )
+
+[node name="Shotgun2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, 32 )
+
+[node name="Shotgun3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80, -96 )
+
+[node name="Shotgun4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, -96 )
+
+[node name="Shotgun5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, -64 )

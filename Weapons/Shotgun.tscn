@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/shotgun.png" type="Texture" id=1]
 [ext_resource path="res://Weapons/Weapon.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Weapons/BulletSpawner.gd" type="Script" id=4]
 [ext_resource path="res://sfx/gunshots/W_24P.wav" type="AudioStream" id=5]
 [ext_resource path="res://sfx/clicks/click3.wav" type="AudioStream" id=6]
+[ext_resource path="res://Weapons/AimingLine.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -148,6 +149,42 @@ tracks/7/keys = {
 "method": "play"
 } ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Graphics/AimingLine:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Graphics/AimingLine2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Graphics/AimingLine3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Shotgun" type="Area2D"]
 collision_layer = 4
@@ -161,13 +198,23 @@ position = Vector2( 3, 2 )
 shape = SubResource( 1 )
 
 [node name="Graphics" type="Node2D" parent="."]
-position = Vector2( -8, 0 )
 
 [node name="Sprite" type="Sprite" parent="Graphics"]
 self_modulate = Color( 0.427451, 0.447059, 0.486275, 1 )
 position = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 624, 145, 16, 16 )
+
+[node name="AimingLine" parent="Graphics" instance=ExtResource( 7 )]
+position = Vector2( 8, 0 )
+
+[node name="AimingLine2" parent="Graphics" instance=ExtResource( 7 )]
+position = Vector2( 8, 0 )
+rotation = 0.261799
+
+[node name="AimingLine3" parent="Graphics" instance=ExtResource( 7 )]
+position = Vector2( 8, 0 )
+rotation = -0.261799
 
 [node name="BulletSpawner" type="Position2D" parent="."]
 position = Vector2( 0.247446, 0 )
@@ -199,4 +246,10 @@ bus = "sfx"
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 bus = "sfx"
+[connection signal="activated" from="." to="Graphics/AimingLine2" method="set_drawing" binds= [ true ]]
+[connection signal="activated" from="." to="Graphics/AimingLine3" method="set_drawing" binds= [ true ]]
+[connection signal="activated" from="." to="Graphics/AimingLine" method="set_drawing" binds= [ true ]]
+[connection signal="deactived" from="." to="Graphics/AimingLine2" method="set_drawing" binds= [ false ]]
+[connection signal="deactived" from="." to="Graphics/AimingLine3" method="set_drawing" binds= [ false ]]
+[connection signal="deactived" from="." to="Graphics/AimingLine" method="set_drawing" binds= [ false ]]
 [connection signal="timeout" from="DeleteTimer" to="." method="queue_free"]

@@ -16,6 +16,7 @@ var max_attack_range = 20
 
 signal attacked
 signal alerted
+signal dead
 
 func _ready():
 	health_manager.connect("dead", self, "kill")
@@ -91,6 +92,8 @@ func kill():
 	if give_points_on_kill:
 		player.add_points(1)
 	$Graphics/AnimationManager/MoveCPUParticles2D.emitting = false
+	$HitBox.deactivate()
+	emit_signal("dead")
 
 func get_move_vec():
 	return character_mover.move_vec

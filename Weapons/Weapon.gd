@@ -5,6 +5,8 @@ class_name Weapon
 onready var anim_player = $AnimationPlayer
 
 signal done_shooting
+signal activated
+signal deactived
 
 var is_shooting = false
 
@@ -22,7 +24,15 @@ func finished_shooting():
 func pickup():
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	$PickupSound.play()
+	activate()
 
 func destroy():
 	$DeleteTimer.start() # use timer so sound effect won't get cut off
 	hide()
+
+func activate():
+	emit_signal("activated")
+
+func deactivate():
+	emit_signal("deactivated")
+	

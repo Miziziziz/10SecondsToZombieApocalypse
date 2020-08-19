@@ -7,6 +7,8 @@ func _ready():
 		child.volume_db = linear2db(vol)
 
 func play():
+	if vol == 0.0:
+		return
 	get_child(randi() % get_child_count()).play()
 
 func stop():

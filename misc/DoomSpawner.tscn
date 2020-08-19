@@ -116,4 +116,8 @@ wait_time = 3.0
 stream = ExtResource( 2 )
 volume_db = -5.049
 bus = "sfx"
+
+[node name="LoadNextLevelTimer" type="Timer" parent="."]
+wait_time = 3.0
 [connection signal="timeout" from="SpawnTimer" to="." method="spawn"]
+[connection signal="timeout" from="LoadNextLevelTimer" to="." method="go_to_next_level"]

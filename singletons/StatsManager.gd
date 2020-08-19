@@ -2,9 +2,9 @@ extends Node
 
 const STAT_MAX = 9
 
-var player_health = 1
-var player_speed = 1
-var player_weapon_slots = 1
+var player_health = 5
+var player_speed = 9
+var player_weapon_slots = 5
 var points = 0
 
 func upgrade_speed():

@@ -5,7 +5,7 @@
 [ext_resource path="res://player_ui/ui_filled_large.png" type="Texture" id=3]
 [ext_resource path="res://player_ui/PanelStyle.tres" type="StyleBox" id=4]
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 8.0
@@ -14,9 +14,9 @@ margin_top = 8.0
 margin_bottom = 8.0
 modulate_color = Color( 0.141176, 0.117647, 0.117647, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 8.0
@@ -25,7 +25,7 @@ margin_top = 8.0
 margin_bottom = 8.0
 modulate_color = Color( 0.337255, 0.2, 0.176471, 1 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 8.0
@@ -34,7 +34,7 @@ margin_top = 8.0
 margin_bottom = 8.0
 modulate_color = Color( 0.815686, 0.666667, 0.376471, 1 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 8.0
@@ -51,10 +51,10 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 8 )
-Button/styles/focus = SubResource( 4 )
-Button/styles/hover = SubResource( 7 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
 Label/fonts/ = null
 Panel/styles/panel = ExtResource( 4 )

@@ -198,7 +198,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 9.93924
+radius = 8.09376
 
 [node name="SuperZombie" type="KinematicBody2D" groups=[
 "zombies",
@@ -267,7 +267,7 @@ initial_velocity = 30.0
 color = Color( 0.764706, 0.72549, 0.631373, 1 )
 
 [node name="StepSounds" parent="Graphics" instance=ExtResource( 7 )]
-vol = 0.3
+vol = 0.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -277,7 +277,7 @@ one_shot = true
 wait_time = 0.4
 one_shot = true
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="KinematicBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 6 )

@@ -86,7 +86,7 @@ position = Vector2( -16.7155, 106.892 )
 position = Vector2( -32, 64 )
 
 [node name="Pistol2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 16, -96 )
+position = Vector2( -16, -112 )
 
 [node name="Pistol4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 192, -80 )

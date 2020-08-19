@@ -21,9 +21,6 @@ func _process(_delta):
 		flip()
 	
 	global_rotation = atan2(look_vec.y, look_vec.x)
-	
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
 
 func shoot():
 	if cur_weapon == null:

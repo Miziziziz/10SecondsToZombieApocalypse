@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieApocMizJam"
-run/main_scene="res://levels/Tutorial.tscn"
+run/main_scene="res://levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -35,7 +35,6 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/fullscreen=true
 mouse_cursor/custom_image="res://assets/crosshair32.png"
 mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
 window/stretch/mode="2d"
@@ -99,6 +98,11 @@ restart={
 shoot={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+continue={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
  ]
 }
 

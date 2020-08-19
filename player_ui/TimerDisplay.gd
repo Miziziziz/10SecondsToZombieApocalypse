@@ -4,6 +4,9 @@ signal out_of_time
 
 var time_left = 10
 export var activated = true
+export var out_of_time_text = "RUN"
+func _ready():
+	text = "Level " + str(LevelManager.get_current_level()) + "/" + str(LevelManager.get_number_of_levels())
 
 func start():
 	if !activated:
@@ -28,6 +31,6 @@ func decrement_time():
 
 func update_display():
 	if time_left == 0:
-		text = "RUN"
+		text = out_of_time_text
 	else:
 		text = "Time Left: " + str(time_left)

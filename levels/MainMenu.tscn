@@ -4,14 +4,14 @@
 [ext_resource path="res://assets/ui/KLEINTEN.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://player_ui/UITemplate.tres" type="Theme" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.109804, 0.0509804, 0.0392157, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 10
 font_data = ExtResource( 2 )
 
@@ -42,7 +42,7 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_left = 0.5
@@ -77,7 +77,7 @@ margin_left = -336.0
 margin_top = -165.935
 margin_right = 336.0
 margin_bottom = -120.935
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Ten Seconds to Zombie Apocalypse"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,6 +110,6 @@ margin_left = 3.14377
 margin_top = -13.8008
 margin_right = 246.144
 margin_bottom = 17.1992
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Created by Yeeteth Von Yeetenheimer
 Y3JlYXRlZCBieSBtaXppeml6aXo="

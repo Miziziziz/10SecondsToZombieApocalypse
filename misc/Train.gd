@@ -6,9 +6,13 @@ var accel_rate = 0.5
 var player = null
 
 export var visual_only = false
+export var activated = true
+onready var start_pos = global_position
 
 func _ready():
 	$BoardTrainArea.hide()
+	if !activated:
+		return
 	var player_objs = get_tree().get_nodes_in_group("player")
 	if player_objs.size() > 0:
 		player_objs[0].connect("collected_all_fuel", self, "start_flashing")
@@ -35,16 +39,19 @@ func start_train():
 	$SmokeStack/SmokeParticles.emitting = true
 	train_running = true
 	$TrainStartSound.play()
+	$KillZone.active = true
 
 func _physics_process(delta):
 	if !train_running:
 		return
 	$AnimationPlayer.play("run", cur_speed / 20.0)
 	cur_speed += accel_rate * delta
-	var coll = move_and_collide(Vector2.LEFT * cur_speed)
-	if coll and coll.collider.has_method("hurt") and "give_points_on_kill" in coll.collider:
-		coll.collider.set("give_points_on_kill", false)
-		coll.collider.hurt(100, Vector2.LEFT)
+	translate(Vector2.LEFT * cur_speed)
+#	var coll = move_and_collide(Vector2.LEFT * cur_speed)
+#	global_position.y = start_pos.y
+#	if coll and coll.collider.has_method("hurt") and "give_points_on_kill" in coll.collider:
+#		coll.collider.set("give_points_on_kill", false)
+#		coll.collider.hurt(100, Vector2.LEFT)
 	player.global_position = global_position
 	if global_position.x < -300:
 		StatsManager.save_player_weapons(player)
